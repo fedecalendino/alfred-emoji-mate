@@ -60,7 +60,7 @@
 				<key>runningsubtext</key>
 				<string>searching...</string>
 				<key>script</key>
-				<string>/usr/bin/python src/main.py $@</string>
+				<string>python ./src/mate.py $@</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -100,7 +100,15 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Alfred Workflow to quickly search emojis
+========================================
+
+SKIN_TONE possible values
+	🏻 Light
+	🏼 Medium-Light
+	🏽 Medium
+	🏾 Medium-Dark	
+	🏿 Dark</string>
 	<key>uidata</key>
 	<dict>
 		<key>3049A585-CD5B-4966-8C53-B7B5A5AA23CE</key>
@@ -118,10 +126,13 @@
 			<integer>25</integer>
 		</dict>
 	</dict>
-	<key>variablesdontexport</key>
-	<array/>
+	<key>variables</key>
+	<dict>
+		<key>SKIN_TONE</key>
+		<string>Medium-Light</string>
+	</dict>
 	<key>version</key>
-	<string>0.1</string>
+	<string>1</string>
 	<key>webaddress</key>
 	<string>https://github.com/federicocalendino/alfred-emoji-mate</string>
 </dict>
