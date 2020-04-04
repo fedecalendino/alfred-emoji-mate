@@ -1,4 +1,0 @@
-alfred-workflow
-emoji
-fuzzywuzzy
-python-levenshtein
