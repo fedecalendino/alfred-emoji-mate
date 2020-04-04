@@ -1,5 +1,8 @@
 ### [Alfred Workflow](https://www.alfredapp.com/workflows/) to quickly search emojis 🧉
 
+![Emoji Mate example](/img/example.png)
+
+
 SKIN_TONE env var possible values:
 
 	🏻 Light
