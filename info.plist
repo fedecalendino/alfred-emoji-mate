@@ -133,8 +133,10 @@ SKIN_TONE possible values
 		<key>SKIN_TONE</key>
 		<string>Medium-Light</string>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>1.0</string>
+	<string>1.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-emoji-mate</string>
 </dict>
