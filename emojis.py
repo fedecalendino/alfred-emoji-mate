@@ -1,6 +1,6 @@
 import os
 
-from emoji import EMOJI_ALIAS_UNICODE
+from emoji import EMOJI_ALIAS_UNICODE_ENGLISH
 
 from alias import CUSTOM_EMOJI_ALIAS
 
@@ -21,7 +21,7 @@ def _main_emojis():
 
     skin_tones = {}
 
-    for name, code in EMOJI_ALIAS_UNICODE.items():
+    for name, code in EMOJI_ALIAS_UNICODE_ENGLISH.items():
         save_skin_tone = False
 
         if "flag_for" in name:

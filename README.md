@@ -1,12 +1,12 @@
 ### [Alfred Workflow](https://www.alfredapp.com/workflows/) to search emojis 🧉
 
-![Emoji Mate example](/img/example.png)
+
+#### Set Up:
+
+![vars example](/img/screenshots/vars.png)
 
 
-SKIN_TONE env var possible values:
+#### Usage:
 
-	🏻 Light
-	🏼 Medium-Light (Default)
-	🏽 Medium
-	🏾 Medium-Dark	
-	🏿 Dark
+![usage vars](/img/screenshots/usage.png)
+

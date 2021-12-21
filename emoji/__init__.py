@@ -15,25 +15,30 @@ emoji terminal output for Python.
 """
 
 
-from emoji.core import emojize
-from emoji.core import demojize
-from emoji.core import get_emoji_regexp
-from emoji.core import emoji_count
-from emoji.core import emoji_lis
-from emoji.unicode_codes import EMOJI_ALIAS_UNICODE
-from emoji.unicode_codes import EMOJI_UNICODE
-from emoji.unicode_codes import UNICODE_EMOJI
-from emoji.unicode_codes import UNICODE_EMOJI_ALIAS
+from emoji.core import *
+from emoji.unicode_codes import *
 
-__version__ = '0.6.0'
-__author__ = 'Taehoon Kim and Kevin Wurster'
+__all__ = [
+    # emoji.core
+    'emojize', 'demojize', 'get_emoji_regexp', 'emoji_count', 'emoji_lis',
+    'replace_emoji', 'version',
+    # emoji.unicode_codes
+    'EMOJI_UNICODE_ENGLISH', 'EMOJI_UNICODE_SPANISH', 'EMOJI_UNICODE_PORTUGUESE',
+    'EMOJI_UNICODE_ITALIAN', 'EMOJI_UNICODE_FRENCH', 'EMOJI_UNICODE_GERMAN',
+    'UNICODE_EMOJI_ENGLISH', 'UNICODE_EMOJI_SPANISH', 'UNICODE_EMOJI_PORTUGUESE',
+    'UNICODE_EMOJI_ITALIAN', 'UNICODE_EMOJI_FRENCH', 'UNICODE_EMOJI_GERMAN',
+    'EMOJI_ALIAS_UNICODE_ENGLISH', 'UNICODE_EMOJI_ALIAS_ENGLISH', 'EMOJI_DATA',
+]
+
+__version__ = '1.6.1'
+__author__ = 'Taehoon Kim, Kevin Wurster and Tahir Jalilov'
 __email__ = 'carpedm20@gmail.com'
-# and wursterk@gmail.com
+# and wursterk@gmail.com, tahir.jalilov@gmail.com
 __source__ = 'https://github.com/carpedm20/emoji/'
 __license__ = '''
 New BSD License
 
-Copyright (c) 2014-2015, Taehoon Kim and Kevin Wurster
+Copyright (c) 2014-2021, Taehoon Kim, Kevin Wurster and Tahir Jalilov
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
