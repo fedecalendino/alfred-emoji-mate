@@ -1,11 +1,8 @@
-# coding=utf-8
-
 import sys
 from difflib import SequenceMatcher
 
-from workflow import Workflow
-
 from emojis import emojis
+from workflow import Workflow
 
 
 def match(s1, s2):
@@ -33,15 +30,15 @@ def main(workflow):
 
     for name, code in results:
         workflow.add_item(
-            title=u'{} {}'.format(code, name),
+            title=f'{code} {name}',
             arg=code,
             copytext=code,
-            icon='icons/none.png',
+            icon="icons/none.png",
             valid=True
         )
 
 
-if __name__ == u"__main__":
+if __name__ == "__main__":
     wf = Workflow()
     wf.run(main)
     wf.send_feedback()

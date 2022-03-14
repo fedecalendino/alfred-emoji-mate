@@ -1,8 +1,7 @@
 import os
 
-from emoji import EMOJI_ALIAS_UNICODE_ENGLISH
-
 from alias import CUSTOM_EMOJI_ALIAS
+from emoji import EMOJI_ALIAS_UNICODE_ENGLISH
 
 VALID_SKIN_TONES = {
     "light": "_light_skin_tone",

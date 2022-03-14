@@ -3,10 +3,10 @@
 
 #### Set Up:
 
-![vars example](/img/screenshots/vars.png)
+![vars example](./img/screenshots/vars.png)
 
 
 #### Usage:
 
-![usage vars](/img/screenshots/usage.png)
+![usage vars](./img/screenshots/usage.png)
 
