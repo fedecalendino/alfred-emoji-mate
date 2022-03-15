@@ -12,8 +12,6 @@
 
 
 import atexit
-from collections import namedtuple
-from contextlib import contextmanager
 import errno
 import fcntl
 import functools
@@ -22,8 +20,10 @@ import os
 import signal
 import subprocess
 import sys
-from threading import Event
 import time
+from collections import namedtuple
+from contextlib import contextmanager
+from threading import Event
 
 # JXA scripts to call Alfred's API via the Scripting Bridge
 # {app} is automatically replaced with "Alfred 3" or
@@ -181,8 +181,8 @@ def run_command(cmd, **kwargs):
         str: Output returned by :func:`~subprocess.check_output`.
 
     """
-    cmd = [utf8ify(s) for s in cmd]
-    return subprocess.check_output(cmd, **kwargs)
+    cmd = [str(s) for s in cmd]
+    return subprocess.check_output(cmd, **kwargs).decode()
 
 
 def run_applescript(script, *args, **kwargs):
@@ -300,11 +300,7 @@ def set_config(name, value, bundleid=None, exportable=False):
     """
     bundleid = bundleid or os.getenv("alfred_workflow_bundleid")
     appname = jxa_app_name()
-    opts = {
-        "toValue": value,
-        "inWorkflow": bundleid,
-        "exportable": exportable,
-    }
+    opts = {"toValue": value, "inWorkflow": bundleid, "exportable": exportable}
 
     script = JXA_SET_CONFIG.format(
         app=json.dumps(appname),
@@ -442,7 +438,7 @@ def appinfo(name):
     if not bid:  # pragma: no cover
         return None
 
-    return AppInfo(unicodify(name), unicodify(path), unicodify(bid))
+    return AppInfo(name, path, bid)
 
 
 @contextmanager
@@ -469,7 +465,7 @@ def atomic_writer(fpath, mode):
         finally:
             try:
                 os.remove(temppath)
-            except (OSError, IOError):
+            except OSError:
                 pass
 
 
@@ -483,7 +479,7 @@ class LockFile(object):
 
     >>> path = '/path/to/file'
     >>> with LockFile(path):
-    >>>     with open(path, 'wb') as fp:
+    >>>     with open(path, 'w') as fp:
     >>>         fp.write(data)
 
     Args:
@@ -576,10 +572,10 @@ class LockFile(object):
             self._lockfile = None
             try:
                 os.unlink(self.lockfile)
-            except (IOError, OSError):  # pragma: no cover
+            except OSError:  # pragma: no cover
                 pass
 
-            return True
+            return True  # noqa: B012
 
     def __enter__(self):
         """Acquire lock."""

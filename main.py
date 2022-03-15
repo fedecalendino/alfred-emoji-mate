@@ -30,7 +30,7 @@ def main(workflow):
 
     for name, code in results:
         workflow.add_item(
-            title=f'{code} {name}',
+            title=f"{code} {name}",
             arg=code,
             copytext=code,
             icon="icons/none.png",

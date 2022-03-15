@@ -32,9 +32,9 @@ import sys
 import tarfile
 import tempfile
 import uuid
+from typing import List
 
 from . import workflow
-
 
 _wf = None
 _log = None
@@ -133,7 +133,7 @@ def install_notifier():
     # until I figure out a better way of excluding this module
     # from coverage in py2.6.
     if sys.version_info >= (2, 7):  # pragma: no cover
-        from AppKit import NSWorkspace, NSImage
+        from AppKit import NSImage, NSWorkspace
 
         ws = NSWorkspace.sharedWorkspace()
         img = NSImage.alloc().init()
@@ -209,6 +209,10 @@ def notify(title="", text="", sound=None):
     return False
 
 
+def usr_bin_env(*args: str) -> List[str]:
+    return ["/usr/bin/env", f'PATH={os.environ["PATH"]}'] + list(args)
+
+
 def convert_image(inpath, outpath, size):
     """Convert an image file using ``sips``.
 
@@ -220,10 +224,12 @@ def convert_image(inpath, outpath, size):
     Raises:
         RuntimeError: Raised if ``sips`` exits with non-zero status.
     """
-    cmd = [b"sips", b"-z", str(size), str(size), inpath, b"--out", outpath]
+    cmd = ["sips", "-z", str(size), str(size), inpath, "--out", outpath]
     # log().debug(cmd)
     with open(os.devnull, "w") as pipe:
-        retcode = subprocess.call(cmd, stdout=pipe, stderr=subprocess.STDOUT)
+        retcode = subprocess.call(
+            cmd, shell=True, stdout=pipe, stderr=subprocess.STDOUT
+        )
 
     if retcode != 0:
         raise RuntimeError("sips exited with %d" % retcode)
@@ -269,7 +275,7 @@ def png_to_icns(png_path, icns_path):
                 continue
             convert_image(png_path, outpath, size)
 
-        cmd = [b"iconutil", b"-c", b"icns", b"-o", icns_path, iconset]
+        cmd = ["iconutil", "-c", "icns", "-o", icns_path, iconset]
 
         retcode = subprocess.call(cmd)
         if retcode != 0:
@@ -289,7 +295,6 @@ if __name__ == "__main__":  # pragma: nocover
     # This won't work on 2.6, as `argparse` isn't available
     # by default.
     import argparse
-
     from unicodedata import normalize
 
     def ustr(s):
