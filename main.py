@@ -34,7 +34,7 @@ def main(workflow):
             arg=code,
             copytext=code,
             icon="icons/none.png",
-            valid=True
+            valid=True,
         )
 
 

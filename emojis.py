@@ -35,7 +35,7 @@ def _main_emojis():
                 save_skin_tone = True
 
         name = name.lower().replace("_", " ").replace("-", " ").replace(":", "").strip()
-        code = u'{}\U0000FE0F'.format(code)
+        code = "{}\U0000FE0F".format(code)
 
         if save_skin_tone:
             skin_tones[name] = code
