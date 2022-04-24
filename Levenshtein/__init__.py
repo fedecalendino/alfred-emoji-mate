@@ -30,7 +30,7 @@ from Levenshtein._levenshtein import (
     quickmedian,
     setmedian,
     seqratio,
-    setratio
+    setratio,
 )
 
 from Levenshtein.cpp_levenshtein import (
@@ -39,5 +39,5 @@ from Levenshtein.cpp_levenshtein import (
     opcodes,
     matching_blocks,
     subtract_edit,
-    apply_edit
+    apply_edit,
 )

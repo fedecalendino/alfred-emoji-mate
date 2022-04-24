@@ -12,6 +12,8 @@
 
 
 import atexit
+from collections import namedtuple
+from contextlib import contextmanager
 import errno
 import fcntl
 import functools
@@ -20,10 +22,8 @@ import os
 import signal
 import subprocess
 import sys
-import time
-from collections import namedtuple
-from contextlib import contextmanager
 from threading import Event
+import time
 
 # JXA scripts to call Alfred's API via the Scripting Bridge
 # {app} is automatically replaced with "Alfred 3" or
@@ -120,30 +120,6 @@ def unicodify(s, encoding="utf-8", norm=None):
     return s
 
 
-def utf8ify(s):
-    """Ensure string is a bytestring.
-
-    .. versionadded:: 1.31
-
-    Returns `str` objects unchanced, encodes `unicode` objects to
-    UTF-8, and calls :func:`str` on anything else.
-
-    Args:
-        s (object): A Python object
-
-    Returns:
-        str: UTF-8 string or string representation of s.
-
-    """
-    if isinstance(s, str):
-        return s
-
-    if isinstance(s, str):
-        return s.encode("utf-8")
-
-    return str(s)
-
-
 def applescriptify(s):
     """Escape string for insertion into an AppleScript string.
 
@@ -182,7 +158,7 @@ def run_command(cmd, **kwargs):
 
     """
     cmd = [str(s) for s in cmd]
-    return subprocess.check_output(cmd, **kwargs).decode()
+    return subprocess.check_output(cmd, **kwargs)
 
 
 def run_applescript(script, *args, **kwargs):
@@ -300,7 +276,11 @@ def set_config(name, value, bundleid=None, exportable=False):
     """
     bundleid = bundleid or os.getenv("alfred_workflow_bundleid")
     appname = jxa_app_name()
-    opts = {"toValue": value, "inWorkflow": bundleid, "exportable": exportable}
+    opts = {
+        "toValue": value,
+        "inWorkflow": bundleid,
+        "exportable": exportable,
+    }
 
     script = JXA_SET_CONFIG.format(
         app=json.dumps(appname),
@@ -431,14 +411,14 @@ def appinfo(name):
     if not output:
         return None
 
-    path = output.split("\n")[0]
+    path = output.decode("utf-8").split("\n")[0]
 
     cmd = ["mdls", "-raw", "-name", "kMDItemCFBundleIdentifier", path]
     bid = run_command(cmd).strip()
     if not bid:  # pragma: no cover
         return None
 
-    return AppInfo(name, path, bid)
+    return AppInfo(unicodify(name), unicodify(path), unicodify(bid))
 
 
 @contextmanager
@@ -451,7 +431,7 @@ def atomic_writer(fpath, mode):
     succeeds. The data is first written to a temporary file.
 
     :param fpath: path of file to write to.
-    :type fpath: ``unicode``
+    :type fpath: ``str``
     :param mode: sames as for :func:`open`
     :type mode: string
 
@@ -465,7 +445,7 @@ def atomic_writer(fpath, mode):
         finally:
             try:
                 os.remove(temppath)
-            except OSError:
+            except (OSError, IOError):
                 pass
 
 
@@ -479,7 +459,7 @@ class LockFile(object):
 
     >>> path = '/path/to/file'
     >>> with LockFile(path):
-    >>>     with open(path, 'w') as fp:
+    >>>     with open(path, 'wb') as fp:
     >>>         fp.write(data)
 
     Args:
@@ -572,10 +552,10 @@ class LockFile(object):
             self._lockfile = None
             try:
                 os.unlink(self.lockfile)
-            except OSError:  # pragma: no cover
+            except (IOError, OSError):  # pragma: no cover
                 pass
 
-            return True  # noqa: B012
+            return True
 
     def __enter__(self):
         """Acquire lock."""

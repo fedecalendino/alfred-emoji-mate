@@ -17,6 +17,7 @@ emoji terminal output for Python.
 
 import sys
 from emoji.core import *
+
 if sys.version_info[0] == 3 and sys.version_info[1] >= 7:
     # On Python>3.7 the __getattr__() method (see below) will be used to show
     # a deprecation warning for module variables like EMOJI_UNICODE_* and UNICODE_EMOJI_*
@@ -29,23 +30,41 @@ else:
 
 __all__ = [
     # emoji.core
-    'emojize', 'demojize', 'get_emoji_regexp', 'emoji_count', 'emoji_lis',
-    'distinct_emoji_lis', 'replace_emoji', 'version', 'is_emoji',
-    'emoji_list', 'distinct_emoji_list',
+    "emojize",
+    "demojize",
+    "get_emoji_regexp",
+    "emoji_count",
+    "emoji_lis",
+    "distinct_emoji_lis",
+    "replace_emoji",
+    "version",
+    "is_emoji",
+    "emoji_list",
+    "distinct_emoji_list",
     # emoji.unicode_codes
-    'EMOJI_UNICODE_ENGLISH', 'EMOJI_UNICODE_SPANISH', 'EMOJI_UNICODE_PORTUGUESE',
-    'EMOJI_UNICODE_ITALIAN', 'EMOJI_UNICODE_FRENCH', 'EMOJI_UNICODE_GERMAN',
-    'UNICODE_EMOJI_ENGLISH', 'UNICODE_EMOJI_SPANISH', 'UNICODE_EMOJI_PORTUGUESE',
-    'UNICODE_EMOJI_ITALIAN', 'UNICODE_EMOJI_FRENCH', 'UNICODE_EMOJI_GERMAN',
-    'EMOJI_ALIAS_UNICODE_ENGLISH', 'UNICODE_EMOJI_ALIAS_ENGLISH', 'EMOJI_DATA',
+    "EMOJI_UNICODE_ENGLISH",
+    "EMOJI_UNICODE_SPANISH",
+    "EMOJI_UNICODE_PORTUGUESE",
+    "EMOJI_UNICODE_ITALIAN",
+    "EMOJI_UNICODE_FRENCH",
+    "EMOJI_UNICODE_GERMAN",
+    "UNICODE_EMOJI_ENGLISH",
+    "UNICODE_EMOJI_SPANISH",
+    "UNICODE_EMOJI_PORTUGUESE",
+    "UNICODE_EMOJI_ITALIAN",
+    "UNICODE_EMOJI_FRENCH",
+    "UNICODE_EMOJI_GERMAN",
+    "EMOJI_ALIAS_UNICODE_ENGLISH",
+    "UNICODE_EMOJI_ALIAS_ENGLISH",
+    "EMOJI_DATA",
 ]
 
-__version__ = '1.7.0'
-__author__ = 'Taehoon Kim, Kevin Wurster and Tahir Jalilov'
-__email__ = 'carpedm20@gmail.com'
+__version__ = "1.7.0"
+__author__ = "Taehoon Kim, Kevin Wurster and Tahir Jalilov"
+__email__ = "carpedm20@gmail.com"
 # and wursterk@gmail.com, tahir.jalilov@gmail.com
-__source__ = 'https://github.com/carpedm20/emoji/'
-__license__ = '''
+__source__ = "https://github.com/carpedm20/emoji/"
+__license__ = """
 New BSD License
 
 Copyright (c) 2014-2021, Taehoon Kim, Kevin Wurster and Tahir Jalilov
@@ -74,17 +93,24 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-'''
+"""
 
 
 _DEPRECATED = [
-    'EMOJI_UNICODE_ENGLISH', 'EMOJI_UNICODE_SPANISH', 'EMOJI_UNICODE_PORTUGUESE',
-    'EMOJI_UNICODE_ITALIAN', 'EMOJI_UNICODE_FRENCH', 'EMOJI_UNICODE_GERMAN',
-
-    'UNICODE_EMOJI_ENGLISH', 'UNICODE_EMOJI_SPANISH', 'UNICODE_EMOJI_PORTUGUESE',
-    'UNICODE_EMOJI_ITALIAN', 'UNICODE_EMOJI_FRENCH', 'UNICODE_EMOJI_GERMAN',
-
-    'EMOJI_ALIAS_UNICODE_ENGLISH', 'UNICODE_EMOJI_ALIAS_ENGLISH',
+    "EMOJI_UNICODE_ENGLISH",
+    "EMOJI_UNICODE_SPANISH",
+    "EMOJI_UNICODE_PORTUGUESE",
+    "EMOJI_UNICODE_ITALIAN",
+    "EMOJI_UNICODE_FRENCH",
+    "EMOJI_UNICODE_GERMAN",
+    "UNICODE_EMOJI_ENGLISH",
+    "UNICODE_EMOJI_SPANISH",
+    "UNICODE_EMOJI_PORTUGUESE",
+    "UNICODE_EMOJI_ITALIAN",
+    "UNICODE_EMOJI_FRENCH",
+    "UNICODE_EMOJI_GERMAN",
+    "EMOJI_ALIAS_UNICODE_ENGLISH",
+    "UNICODE_EMOJI_ALIAS_ENGLISH",
 ]
 
 
@@ -94,4 +120,4 @@ def __getattr__(varname):
             # Show a deprecation warning
             emoji.core._deprecation_removed(varname, "Use 'emoji.EMOJI_DATA' instead.")
         return getattr(emoji.unicode_codes, varname)
-    raise AttributeError("module 'emoji' has no attribute '%s'" % (varname, ))
+    raise AttributeError("module 'emoji' has no attribute '%s'" % (varname,))

@@ -22,20 +22,16 @@
 """
 
 
-import json
-import os
-import re
-import subprocess
-import tempfile
 from collections import defaultdict
 from functools import total_ordering
-from itertools import zip_longest
-
-import requests
-
-from workflow.util import atomic_writer
+import json
+import os
+import tempfile
+import re
+import subprocess
 
 from . import workflow
+from . import web
 
 # __all__ = []
 
@@ -179,13 +175,11 @@ class Download(object):
     def __str__(self):
         """Format `Download` for printing."""
         return (
-            "Download("
-            "url={dl.url!r}, "
+            "Download(url={dl.url!r}, "
             "filename={dl.filename!r}, "
             "version={dl.version!r}, "
-            "prerelease={dl.prerelease!r}"
-            ")"
-        ).format(dl=self)
+            "prerelease={dl.prerelease!r})".format(dl=self)
+        )
 
     def __repr__(self):
         """Code-like representation of `Download`."""
@@ -243,7 +237,7 @@ class Version(object):
         """Create new `Version` object.
 
         Args:
-            vstr (basestring): Semantic version string.
+            vstr (``str``): Semantic version string.
         """
         if not vstr:
             raise ValueError("invalid version number: {!r}".format(vstr))
@@ -257,7 +251,6 @@ class Version(object):
         self._parse(vstr)
 
     def _parse(self, vstr):
-        vstr = str(vstr)
         if vstr.startswith("v"):
             m = self.match_version(vstr[1:])
         else:
@@ -291,7 +284,7 @@ class Version(object):
         parsed = []
         parts = s.split(".")
         for p in parts:
-            if p.isdigit():
+            if p and all(c.isdigit() for c in p):
                 p = int(p)
             parsed.append(p)
         return parsed
@@ -314,20 +307,20 @@ class Version(object):
                 return True
             if other.suffix and not self.suffix:
                 return False
+            lft = self._parse_dotted_string(self.suffix)
+            rgt = self._parse_dotted_string(other.suffix)
+            try:
+                return lft < rgt
+            except TypeError:
+                # Python 3 will not allow lt/gt comparisons of int & str.
+                while lft and rgt and lft[0] == rgt[0]:
+                    lft.pop(0)
+                    rgt.pop(0)
 
-            self_suffix = self._parse_dotted_string(self.suffix)
-            other_suffix = self._parse_dotted_string(other.suffix)
+                # Alphanumeric versions are earlier than numeric versions,
+                # therefore lft < rgt if the right version is numeric.
+                return isinstance(rgt[0], int)
 
-            for s, o in zip_longest(self_suffix, other_suffix):
-                if s is None:  # shorter value wins
-                    return True
-                elif o is None:  # longer value loses
-                    return False
-                elif type(s) != type(o):  # type coersion
-                    s, o = str(s), str(o)
-                if s == o:  # next if the same compare
-                    continue
-                return s < o  # finally compare
         # t > o
         return False
 
@@ -389,11 +382,10 @@ def retrieve_download(dl):
     path = os.path.join(tempfile.gettempdir(), dl.filename)
     wf().logger.debug("downloading update from " "%r to %r ...", dl.url, path)
 
-    r = requests.get(dl.url)
+    r = web.get(dl.url)
     r.raise_for_status()
 
-    with atomic_writer(path, "wb") as file_obj:
-        file_obj.write(r.content)
+    r.save_to_path(path)
 
     return path
 
@@ -429,7 +421,7 @@ def get_downloads(repo):
 
     def _fetch():
         wf().logger.info("retrieving releases for %r ...", repo)
-        r = requests.get(url)
+        r = web.get(url)
         r.raise_for_status()
         return r.content
 
@@ -486,7 +478,11 @@ def check_update(repo, current_version, prereleases=False, alfred_version=None):
     """
     key = "__workflow_latest_version"
     # data stored when no update is available
-    no_update = {"available": False, "download": None, "version": None}
+    no_update = {
+        "available": False,
+        "download": None,
+        "version": None,
+    }
     current = Version(current_version)
 
     dls = get_downloads(repo)
@@ -508,7 +504,12 @@ def check_update(repo, current_version, prereleases=False, alfred_version=None):
 
     if dl.version > current:
         wf().cache_data(
-            key, {"version": str(dl.version), "download": dl.dict, "available": True}
+            key,
+            {
+                "version": str(dl.version),
+                "download": dl.dict,
+                "available": True,
+            },
         )
         return True
 
@@ -524,7 +525,11 @@ def install_update():
     """
     key = "__workflow_latest_version"
     # data stored when no update is available
-    no_update = {"available": False, "download": None, "version": None}
+    no_update = {
+        "available": False,
+        "download": None,
+        "version": None,
+    }
     status = wf().cached_data(key, max_age=0)
 
     if not status or not status.get("available"):

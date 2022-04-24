@@ -32,9 +32,9 @@ import sys
 import tarfile
 import tempfile
 import uuid
-from typing import List
 
 from . import workflow
+
 
 _wf = None
 _log = None
@@ -133,7 +133,7 @@ def install_notifier():
     # until I figure out a better way of excluding this module
     # from coverage in py2.6.
     if sys.version_info >= (2, 7):  # pragma: no cover
-        from AppKit import NSImage, NSWorkspace
+        from AppKit import NSWorkspace, NSImage
 
         ws = NSWorkspace.sharedWorkspace()
         img = NSImage.alloc().init()
@@ -143,10 +143,13 @@ def install_notifier():
     # Change bundle ID of installed app
     ip_path = os.path.join(app_path, "Contents/Info.plist")
     bundle_id = "{0}.{1}".format(wf().bundleid, uuid.uuid4().hex)
-    data = plistlib.readPlist(ip_path)
+    with open(ip_path, "rb") as plist_fp:
+        data = plistlib.load(plist_fp)
+
     log().debug("changing bundle ID to %r", bundle_id)
     data["CFBundleIdentifier"] = bundle_id
-    plistlib.writePlist(data, ip_path)
+    with open(ip_path, "wb") as plist_fp:
+        plistlib.dump(data, plist_fp)
 
 
 def validate_sound(sound):
@@ -209,10 +212,6 @@ def notify(title="", text="", sound=None):
     return False
 
 
-def usr_bin_env(*args: str) -> List[str]:
-    return ["/usr/bin/env", f'PATH={os.environ["PATH"]}'] + list(args)
-
-
 def convert_image(inpath, outpath, size):
     """Convert an image file using ``sips``.
 
@@ -224,12 +223,10 @@ def convert_image(inpath, outpath, size):
     Raises:
         RuntimeError: Raised if ``sips`` exits with non-zero status.
     """
-    cmd = ["sips", "-z", str(size), str(size), inpath, "--out", outpath]
+    cmd = [b"sips", b"-z", str(size), str(size), inpath, b"--out", outpath]
     # log().debug(cmd)
     with open(os.devnull, "w") as pipe:
-        retcode = subprocess.call(
-            cmd, shell=True, stdout=pipe, stderr=subprocess.STDOUT
-        )
+        retcode = subprocess.call(cmd, stdout=pipe, stderr=subprocess.STDOUT)
 
     if retcode != 0:
         raise RuntimeError("sips exited with %d" % retcode)
@@ -275,7 +272,7 @@ def png_to_icns(png_path, icns_path):
                 continue
             convert_image(png_path, outpath, size)
 
-        cmd = ["iconutil", "-c", "icns", "-o", icns_path, iconset]
+        cmd = [b"iconutil", b"-c", b"icns", b"-o", icns_path, iconset]
 
         retcode = subprocess.call(cmd)
         if retcode != 0:
@@ -295,6 +292,7 @@ if __name__ == "__main__":  # pragma: nocover
     # This won't work on 2.6, as `argparse` isn't available
     # by default.
     import argparse
+
     from unicodedata import normalize
 
     def ustr(s):

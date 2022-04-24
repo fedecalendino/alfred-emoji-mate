@@ -12,10 +12,14 @@
 
 import os
 
-# Filter matching rules
-# Icons
-# Exceptions
 # Workflow objects
+from .workflow import Workflow, manager
+from .workflow3 import Variables, Workflow3
+
+# Exceptions
+from .workflow import PasswordNotFound, KeychainError
+
+# Icons
 from .workflow import (
     ICON_ACCOUNT,
     ICON_BURN,
@@ -40,6 +44,10 @@ from .workflow import (
     ICON_USER,
     ICON_WARNING,
     ICON_WEB,
+)
+
+# Filter matching rules
+from .workflow import (
     MATCH_ALL,
     MATCH_ALLCHARS,
     MATCH_ATOM,
@@ -49,12 +57,8 @@ from .workflow import (
     MATCH_INITIALS_STARTSWITH,
     MATCH_STARTSWITH,
     MATCH_SUBSTRING,
-    KeychainError,
-    PasswordNotFound,
-    Workflow,
-    manager,
 )
-from .workflow3 import Variables, Workflow3
+
 
 __title__ = "Alfred-Workflow"
 __version__ = open(os.path.join(os.path.dirname(__file__), "version")).read()
