@@ -7,6 +7,14 @@ optional = false
 python-versions = ">=3.8,<4.0"
 
 [[package]]
+name = "altgraph"
+version = "0.17.2"
+description = "Python graph (network) package"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "black"
 version = "22.6.0"
 description = "The uncompromising code formatter."
@@ -78,6 +86,14 @@ python-versions = "*"
 dev = ["pytest", "coverage", "coveralls"]
 
 [[package]]
+name = "future"
+version = "0.18.2"
+description = "Clean single-source support for Python 3 and 2"
+category = "dev"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
 name = "fuzzywuzzy"
 version = "0.18.0"
 description = "Fuzzy string matching in python"
@@ -97,6 +113,17 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "macholib"
+version = "1.16"
+description = "Mach-O header analysis and editing"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+altgraph = ">=0.15"
+
+[[package]]
 name = "mypy-extensions"
 version = "0.4.3"
 description = "Experimental type system extensions for programs checked with the mypy typechecker."
@@ -113,6 +140,17 @@ optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 
 [[package]]
+name = "pefile"
+version = "2022.5.30"
+description = "Python PE parsing module"
+category = "dev"
+optional = false
+python-versions = ">=3.6.0"
+
+[package.dependencies]
+future = "*"
+
+[[package]]
 name = "platformdirs"
 version = "2.5.2"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
@@ -123,6 +161,41 @@ python-versions = ">=3.7"
 [package.extras]
 docs = ["furo (>=2021.7.5b38)", "proselint (>=0.10.2)", "sphinx-autodoc-typehints (>=1.12)", "sphinx (>=4)"]
 test = ["appdirs (==1.4.4)", "pytest-cov (>=2.7)", "pytest-mock (>=3.6)", "pytest (>=6)"]
+
+[[package]]
+name = "pyinstaller"
+version = "5.2"
+description = "PyInstaller bundles a Python application and all its dependencies into a single package."
+category = "dev"
+optional = false
+python-versions = "<3.11,>=3.7"
+
+[package.dependencies]
+altgraph = "*"
+macholib = {version = ">=1.8", markers = "sys_platform == \"darwin\""}
+pefile = {version = ">=2022.5.30", markers = "sys_platform == \"win32\""}
+pyinstaller-hooks-contrib = ">=2021.4"
+pywin32-ctypes = {version = ">=0.2.0", markers = "sys_platform == \"win32\""}
+
+[package.extras]
+encryption = ["tinyaes (>=1.0.0)"]
+hook_testing = ["pytest (>=2.7.3)", "execnet (>=1.5.0)", "psutil"]
+
+[[package]]
+name = "pyinstaller-hooks-contrib"
+version = "2022.8"
+description = "Community maintained hooks for PyInstaller"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "pywin32-ctypes"
+version = "0.2.0"
+description = ""
+category = "dev"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "requests"
@@ -173,22 +246,29 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.8"
-content-hash = "bbc3e8bd265bd36c7de8287ed6afd4c8b6955a8be440337174f4a008b9178a8b"
+python-versions = ">=3.8,<3.11"
+content-hash = "ad8d6f8268347de1b54384b9547aa3bea6b6fd7c525f43a9d93dd5ccd0afa2f4"
 
 [metadata.files]
 alfred-pyflow = []
+altgraph = []
 black = []
 certifi = []
 charset-normalizer = []
 click = []
 colorama = []
 emoji = []
+future = []
 fuzzywuzzy = []
 idna = []
+macholib = []
 mypy-extensions = []
 pathspec = []
+pefile = []
 platformdirs = []
+pyinstaller = []
+pyinstaller-hooks-contrib = []
+pywin32-ctypes = []
 requests = []
 tomli = []
 typing-extensions = []

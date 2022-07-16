@@ -60,7 +60,9 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>poetry run python3 src/main.py $@</string>
+				<string># poetry run python3 src/main.py $@
+
+./dist/main $@</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
