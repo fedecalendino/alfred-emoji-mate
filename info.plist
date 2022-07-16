@@ -60,7 +60,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>python3 ./main.py $@</string>
+				<string>poetry run python3 src/main.py $@</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -116,18 +116,20 @@ SKIN_TONE possible values
 		<key>3049A585-CD5B-4966-8C53-B7B5A5AA23CE</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<real>280</real>
 			<key>ypos</key>
-			<integer>25</integer>
+			<real>15</real>
 		</dict>
 		<key>B1B0F8E3-DB09-480B-8586-175AE65502C7</key>
 		<dict>
 			<key>xpos</key>
-			<integer>30</integer>
+			<real>30</real>
 			<key>ypos</key>
-			<integer>25</integer>
+			<real>15</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>variables</key>
 	<dict>
 		<key>SKIN_TONE</key>

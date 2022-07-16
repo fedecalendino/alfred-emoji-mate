@@ -2,7 +2,7 @@ import sys
 from difflib import SequenceMatcher
 
 from emojis import emojis
-from workflow import Workflow
+from pyflow import Workflow
 
 
 def match(s1, s2):
@@ -33,7 +33,6 @@ def main(workflow):
             title=f"{code} {name}",
             arg=code,
             copytext=code,
-            icon="icons/none.png",
             valid=True,
         )
 
