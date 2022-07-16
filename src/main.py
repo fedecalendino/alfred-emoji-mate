@@ -29,7 +29,7 @@ def main(workflow):
     results = search(text, limit=20)
 
     for name, code in results:
-        workflow.add_item(
+        workflow.new_item(
             title=f"{code} {name}",
             arg=code,
             copytext=code,
