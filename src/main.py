@@ -25,7 +25,7 @@ def search(text, limit=10):
 
 
 def main(workflow):
-    text = workflow.args[0].lower()
+    text = " ".join(workflow.args).lower()
     results = search(text, limit=20)
 
     for name, code in results:
@@ -34,6 +34,8 @@ def main(workflow):
             arg=code,
             copytext=code,
             valid=True,
+        ).set_icon_file(
+            path=None,
         )
 
 

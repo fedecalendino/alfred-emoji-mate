@@ -1,6 +1,6 @@
 [[package]]
 name = "alfred-pyflow"
-version = "0.2.0"
+version = "0.2.1"
 description = "Minimal library for the development of Alfred Workflows."
 category = "main"
 optional = false
@@ -37,25 +37,6 @@ jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
 uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
-name = "certifi"
-version = "2022.6.15"
-description = "Python package for providing Mozilla's CA Bundle."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[[package]]
-name = "charset-normalizer"
-version = "2.1.0"
-description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
-category = "main"
-optional = false
-python-versions = ">=3.6.0"
-
-[package.extras]
-unicode_backport = ["unicodedata2"]
-
-[[package]]
 name = "click"
 version = "8.1.3"
 description = "Composable command line interface toolkit"
@@ -75,8 +56,27 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "coverage"
+version = "6.4.2"
+description = "Code coverage measurement for Python"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+toml = ["tomli"]
+
+[[package]]
+name = "ddt"
+version = "1.5.0"
+description = "Data-Driven/Decorated Tests"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "emoji"
-version = "1.7.0"
+version = "2.0.0"
 description = "Emoji for Python"
 category = "main"
 optional = false
@@ -103,14 +103,6 @@ python-versions = "*"
 
 [package.extras]
 speedup = ["python-levenshtein (>=0.12)"]
-
-[[package]]
-name = "idna"
-version = "3.3"
-description = "Internationalized Domain Names in Applications (IDNA)"
-category = "main"
-optional = false
-python-versions = ">=3.5"
 
 [[package]]
 name = "macholib"
@@ -198,24 +190,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "requests"
-version = "2.28.1"
-description = "Python HTTP for Humans."
-category = "main"
-optional = false
-python-versions = ">=3.7, <4"
-
-[package.dependencies]
-certifi = ">=2017.4.17"
-charset-normalizer = ">=2,<3"
-idna = ">=2.5,<4"
-urllib3 = ">=1.21.1,<1.27"
-
-[package.extras]
-socks = ["PySocks (>=1.5.6,!=1.5.7)"]
-use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
-
-[[package]]
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
@@ -231,36 +205,22 @@ category = "dev"
 optional = false
 python-versions = ">=3.7"
 
-[[package]]
-name = "urllib3"
-version = "1.26.10"
-description = "HTTP library with thread-safe connection pooling, file post, and more."
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, <4"
-
-[package.extras]
-brotli = ["brotlicffi (>=0.8.0)", "brotli (>=1.0.9)", "brotlipy (>=0.6.0)"]
-secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
-socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8,<3.11"
-content-hash = "ad8d6f8268347de1b54384b9547aa3bea6b6fd7c525f43a9d93dd5ccd0afa2f4"
+content-hash = "f975b80c80d62ddb110d20d36b98394bf1241ee6aedf379f5882ad66a5a9dca6"
 
 [metadata.files]
 alfred-pyflow = []
 altgraph = []
 black = []
-certifi = []
-charset-normalizer = []
 click = []
 colorama = []
+coverage = []
+ddt = []
 emoji = []
 future = []
 fuzzywuzzy = []
-idna = []
 macholib = []
 mypy-extensions = []
 pathspec = []
@@ -269,7 +229,5 @@ platformdirs = []
 pyinstaller = []
 pyinstaller-hooks-contrib = []
 pywin32-ctypes = []
-requests = []
 tomli = []
 typing-extensions = []
-urllib3 = []

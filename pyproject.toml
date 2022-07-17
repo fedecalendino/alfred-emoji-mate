@@ -1,20 +1,26 @@
 [tool.poetry]
-name = "alfred-emoji-mate"
-version = "1.4.0"
-description = "Alfred Workflow to search emojis 🧉"
-authors = ["Fede Calendino <fede@calendino.com>"]
+name = "Emoji Mate"
+version = "1.5.0"
+description = "Quickly search for emojis"
+documentation = "https://github.com/fedecalendino/alfred-emoji-mate/blob/main/README.md"
+homepage = "https://github.com/fedecalendino/alfred-emoji-mate"
 license = "MIT"
+
+authors = [
+    "Fede Calendino <fede@calendino.com>"
+]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
-emoji = "^1.7.0"
+alfred-pyflow = "latest"
+emoji = "^2.0.0"
 fuzzywuzzy = "^0.18.0"
-requests = "^2.28.1"
-alfred-pyflow = "0.2.0"
 
 [tool.poetry.dev-dependencies]
-black = "^22.6.0"
-pyinstaller = "^5.2"
+black = "latest"
+coverage = "latest"
+ddt = "latest"
+pyinstaller = "latest"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

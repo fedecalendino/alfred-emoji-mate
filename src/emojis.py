@@ -1,7 +1,7 @@
 import os
 
-from alias import CUSTOM_EMOJI_ALIAS
-from emoji import EMOJI_ALIAS_UNICODE_ENGLISH
+from aliases import CUSTOM_EMOJI_ALIAS
+from emoji import EMOJI_DATA
 
 VALID_SKIN_TONES = {
     "light": "_light_skin_tone",
@@ -20,22 +20,26 @@ def _main_emojis():
 
     skin_tones = {}
 
-    for name, code in EMOJI_ALIAS_UNICODE_ENGLISH.items():
-        save_skin_tone = False
+    for emoji, data in EMOJI_DATA.items():
+        name = data["en"]
 
         if "flag_for" in name:
             continue
+
+        save_skin_tone = False
 
         if name.endswith("skin_tone:"):
             if not skin_tone:
                 continue
 
-            if name.endswith(skin_tone + ":"):
-                name = name.replace(skin_tone, "")
-                save_skin_tone = True
+            if not name.endswith(skin_tone + ":"):
+                continue
+
+            name = name.replace(skin_tone, "")
+            save_skin_tone = True
 
         name = name.lower().replace("_", " ").replace("-", " ").replace(":", "").strip()
-        code = "{}\U0000FE0F".format(code)
+        code = "{}\U0000FE0F".format(emoji)
 
         if save_skin_tone:
             skin_tones[name] = code
