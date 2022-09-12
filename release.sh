@@ -39,6 +39,7 @@ do
 
   echo " * $VARIABLE: cleared"
 done
+echo
 
 mkdir releases 2> /dev/null
 zip "releases/$FILENAME" -r dist img *.png info.plist
