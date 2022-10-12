@@ -102,15 +102,7 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Quickly search for emojis 🧉️
-
-
-SKIN_TONE possible values
-	🏻 Light
-	🏼 Medium-Light
-	🏽 Medium
-	🏾 Medium-Dark	
-	🏿 Dark</string>
+	<string>Quickly search for emojis 🧉️</string>
 	<key>uidata</key>
 	<dict>
 		<key>1F6B084F-ECB0-4573-B67E-E110AEB00649</key>
@@ -129,16 +121,48 @@ SKIN_TONE possible values
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
-	<array/>
-	<key>variables</key>
-	<dict>
-		<key>SKIN_TONE</key>
-		<string>Medium-Light</string>
-	</dict>
-	<key>variablesdontexport</key>
-	<array/>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Medium-Light</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>🏻 Light</string>
+						<string>Light</string>
+					</array>
+					<array>
+						<string>🏼 Medium-Light</string>
+						<string>Medium-Light</string>
+					</array>
+					<array>
+						<string>🏽 Medium</string>
+						<string>Medium</string>
+					</array>
+					<array>
+						<string>🏾 Medium-Dark</string>
+						<string>Medium-Dark</string>
+					</array>
+					<array>
+						<string>🏿 Dark</string>
+						<string>Dark</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Default skin tone for emojis</string>
+			<key>label</key>
+			<string>SKIN_TONE</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>SKIN_TONE</string>
+		</dict>
+	</array>
 	<key>version</key>
-	<string>1.6.0</string>
+	<string>1.7.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-emoji-mate</string>
 </dict>

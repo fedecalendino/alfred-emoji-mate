@@ -15,7 +15,7 @@ VALID_SKIN_TONES = {
 def _main_emojis():
     main_emojis = {}
 
-    skin_tone = os.getenv("SKIN_TONE", "Medium-Light").lower()
+    skin_tone = os.getenv("SKIN_TONE", "").lower()
     skin_tone = VALID_SKIN_TONES.get(skin_tone)
 
     skin_tones = {}

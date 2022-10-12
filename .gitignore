@@ -1,6 +1,8 @@
 *pyc
 .DS_Store
 
+prefs.plist
+
 bin/
 build/
 dist/

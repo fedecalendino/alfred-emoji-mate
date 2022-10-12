@@ -3,12 +3,12 @@
 [Alfred Workflow](https://www.alfredapp.com/workflows/) to quickly search for emojis 🧉️
 
 
-#### set Up:
+#### Configuration:
 
-![vars example](./img/screenshots/vars.png)
+![vars example](./img/screenshots/config.png)
 
 
-#### usage:
+#### Usage:
 
 ![usage vars](./img/screenshots/usage.png)
 
