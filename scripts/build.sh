@@ -1,24 +1,19 @@
-function build() {
-  echo "Generating $1 binary"
-  echo
-
-  poetry run pyinstaller --onedir --paths ./src/ "src/$1.py" 1> /dev/null
-
-  echo "Workspace cleanup"
-  echo
-
-  rm "./$1.spec"
-  rm -rf "./build/"
-
-  echo
-	echo "Finished generating bin file for $1"
-	echo
-}
-
-
 rm -rf "./dist/"
 
-build main
+echo "Copy dependencies"
+cp -r $(find .venv | egrep "site-packages$") ./dist
+
+echo "Clean up dist folder"
+cd dist
+ls -d */ | grep info | xargs rm -rf
+ls | egrep "^\_.*" | xargs rm -rf
+
+rm -rf *.so black blackd blib2to3 distutils* pkg_resources pip* setuptools* wheel*
+
+cd ..
+
+echo "Copy source code"
+cp -r ./src/* dist
 
 echo "Finished"
 echo
