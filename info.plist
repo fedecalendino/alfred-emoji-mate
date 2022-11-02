@@ -126,6 +126,27 @@
 			<key>config</key>
 			<dict>
 				<key>default</key>
+				<string>;</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword to quickly search for emojis.</string>
+			<key>label</key>
+			<string>Emoji Mate Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
 				<string>Medium-Light</string>
 				<key>pairs</key>
 				<array>
@@ -160,30 +181,9 @@
 			<key>variable</key>
 			<string>SKIN_TONE</string>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string>;</string>
-				<key>placeholder</key>
-				<string></string>
-				<key>required</key>
-				<true/>
-				<key>trim</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>label</key>
-			<string>Emoji Mate Keyword</string>
-			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>keyword</string>
-		</dict>
 	</array>
 	<key>version</key>
-	<string>1.8.0</string>
+	<string>1.8.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-emoji-mate</string>
 </dict>
