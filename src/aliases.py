@@ -4125,7 +4125,6 @@ CUSTOM_EMOJI_ALIAS = {
         "dial",
     ],
     "iran": [
-        "iran,",
         "islamic",
         "republic",
         "flag",
@@ -4742,7 +4741,6 @@ CUSTOM_EMOJI_ALIAS = {
         "banner",
     ],
     "macedonia": [
-        "macedonia,",
         "flag",
         "nation",
         "country",
@@ -5226,7 +5224,6 @@ CUSTOM_EMOJI_ALIAS = {
         "germs",
     ],
     "micronesia": [
-        "micronesia,",
         "federated",
         "states",
         "flag",
@@ -5277,7 +5274,6 @@ CUSTOM_EMOJI_ALIAS = {
         "quiet",
     ],
     "moldova": [
-        "moldova,",
         "republic",
         "flag",
         "nation",
@@ -8209,7 +8205,6 @@ CUSTOM_EMOJI_ALIAS = {
         "orange",
     ],
     "tanzania": [
-        "tanzania,",
         "united",
         "republic",
         "flag",
