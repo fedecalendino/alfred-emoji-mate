@@ -175,7 +175,7 @@
 			<key>description</key>
 			<string>Default skin tone for emojis</string>
 			<key>label</key>
-			<string>SKIN_TONE</string>
+			<string>Skin Tone</string>
 			<key>type</key>
 			<string>popupbutton</string>
 			<key>variable</key>
