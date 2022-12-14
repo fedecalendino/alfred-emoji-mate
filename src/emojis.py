@@ -20,6 +20,7 @@ def _main_emojis():
     skin_tone = VALID_SKIN_TONES.get(skin_tone)
 
     skin_tones = {}
+    aliases = {}
 
     for emoji, data in EMOJI_DATA.items():
         name = data["en"]
@@ -46,6 +47,9 @@ def _main_emojis():
             skin_tones[name] = code
         else:
             main_emojis[name] = code
+
+            for alias in data.get("alias", []):
+                main_emojis[alias.replace(":", "")] = code
 
     main_emojis.update(skin_tones)
     return main_emojis

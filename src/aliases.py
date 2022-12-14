@@ -9532,6 +9532,7 @@ CUSTOM_EMOJI_ALIAS = {
         "crazy",
     ],
     "zap": [
+        "lightning",
         "thunder",
         "weather",
         "lightning bolt",
