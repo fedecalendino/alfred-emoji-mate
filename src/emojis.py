@@ -4,6 +4,7 @@ from aliases import CUSTOM_EMOJI_ALIAS
 from emoji import EMOJI_DATA
 
 VALID_SKIN_TONES = {
+    "": "",
     "light": "_light_skin_tone",
     "medium-light": "_medium-light_skin_tone",
     "medium": "_medium_skin_tone",

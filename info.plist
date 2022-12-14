@@ -151,23 +151,27 @@
 				<key>pairs</key>
 				<array>
 					<array>
-						<string>🏻 Light</string>
+						<string>👍 None</string>
+						<string>None</string>
+					</array>
+					<array>
+						<string>👍🏻 Light</string>
 						<string>Light</string>
 					</array>
 					<array>
-						<string>🏼 Medium-Light</string>
+						<string>👍🏼 Medium-Light</string>
 						<string>Medium-Light</string>
 					</array>
 					<array>
-						<string>🏽 Medium</string>
+						<string>👍🏽 Medium</string>
 						<string>Medium</string>
 					</array>
 					<array>
-						<string>🏾 Medium-Dark</string>
+						<string>👍🏾 Medium-Dark</string>
 						<string>Medium-Dark</string>
 					</array>
 					<array>
-						<string>🏿 Dark</string>
+						<string>👍🏿 Dark</string>
 						<string>Dark</string>
 					</array>
 				</array>
@@ -183,7 +187,7 @@
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.8.2</string>
+	<string>1.9.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-emoji-mate</string>
 </dict>
