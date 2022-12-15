@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Emoji Mate"
-version = "1.9.1"
+version = "1.9.2"
 description = "Quickly search for emojis"
 documentation = "https://github.com/fedecalendino/alfred-emoji-mate/blob/main/README.md"
 homepage = "https://github.com/fedecalendino/alfred-emoji-mate"
@@ -13,7 +13,7 @@ authors = [
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
 alfred-pyflow = "latest"
-emoji = "^2.1.0"
+emoji = "^2.2.0"
 fuzzywuzzy = "^0.18.0"
 
 [tool.poetry.dev-dependencies]
