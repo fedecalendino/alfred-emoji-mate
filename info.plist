@@ -147,6 +147,49 @@
 			<key>config</key>
 			<dict>
 				<key>default</key>
+				<string>en</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>🇬🇧 English</string>
+						<string>en</string>
+					</array>
+					<array>
+						<string>🇩🇪 Deutsche</string>
+						<string>de</string>
+					</array>
+					<array>
+						<string>🇪🇸 Español</string>
+						<string>es</string>
+					</array>
+					<array>
+						<string>🇫🇷 Français</string>
+						<string>fr</string>
+					</array>
+					<array>
+						<string>🇮🇹 Italiano</string>
+						<string>it</string>
+					</array>
+					<array>
+						<string>🇵🇹 Português</string>
+						<string>pt</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Select the language you prefer.
+note: not all emojis are available in all languages.</string>
+			<key>label</key>
+			<string>Language</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>LANG</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
 				<string>Medium-Light</string>
 				<key>pairs</key>
 				<array>

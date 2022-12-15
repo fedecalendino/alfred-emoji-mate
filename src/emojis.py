@@ -19,9 +19,12 @@ def clean(name: str) -> str:
 
 
 def build():
+    names = defaultdict()
     normal_emojis = defaultdict(list)
     skin_toned_emojis = defaultdict(list)
     aliased_emojis = defaultdict(list)
+
+    lang = os.getenv("LANG", "en").lower()
 
     skin_tone = os.getenv("SKIN_TONE", "light").lower()
     skin_tone = VALID_SKIN_TONES.get(skin_tone)
@@ -31,49 +34,60 @@ def build():
         if data["status"] != 2:  # fully_qualified
             continue
 
-        name = data["en"]
+        if not data.get(lang):
+            continue
 
-        if "flag_for" in name:
+        key = data["en"]
+
+        if "flag_for" in key:
             continue
 
         prioritize_skin_tone = False
 
         # change or skip unwanted skin tones
-        if "skin_tone" in name:
-            if skin_tone not in name:
+        if "skin_tone" in key:
+            if skin_tone not in key:
                 continue
 
-            name = name.replace(skin_tone, "", 1)
+            key = key.replace(skin_tone, "", 1)
             prioritize_skin_tone = True
 
-        name = clean(name)
+        key = clean(key)
         code = f"{emoji}\U0000FE0F"
         uuid = uuid4()
 
         if prioritize_skin_tone:
             # reuse the same uuid as the non skin toned version
-            normal = normal_emojis.get(name)
+            normal = normal_emojis.get(key)
 
             if normal:
                 uuid = normal[0][0]
 
-            skin_toned_emojis[name].append((uuid, code))
+            skin_toned_emojis[key].append((uuid, code))
         else:
-            normal_emojis[name].append((uuid, code))
+            normal_emojis[key].append((uuid, code))
+
+        names[uuid] = clean(data[lang])
 
         # add all aliases for that specific emoji
         for alias in data.get("alias", []):
             if "flag_for" in alias:
                 continue
 
-            aliased_emojis[uuid].append(clean(alias))
+            alias = clean(alias)
+
+            if key != alias:
+                aliased_emojis[uuid].append(alias)
 
     # replace the selected skin toned emojis over the non skin toned
     normal_emojis.update(skin_toned_emojis)
 
-    for name, codes in normal_emojis.items():
+    for key, codes in normal_emojis.items():
         for uuid, code in codes:
-            yield name, code
+            yield names[uuid], code
+
+            if lang != "en":
+                continue
 
             for alias in aliased_emojis.get(uuid, []):
                 yield alias, code
