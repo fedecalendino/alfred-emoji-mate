@@ -5,6 +5,8 @@ cp -r $(find .venv | egrep "site-packages$") ./dist
 
 echo "Clean up dist folder"
 cd dist
+
+find . | grep __pycache__ | xargs rm -rf
 ls -d */ | grep info | xargs rm -rf
 ls | egrep "^\_.*" | xargs rm -rf
 
@@ -14,6 +16,7 @@ cd ..
 
 echo "Copy source code"
 cp -r ./src/* dist
+
 
 echo "Finished"
 echo
