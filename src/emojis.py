@@ -5,7 +5,6 @@ from collections import defaultdict
 from emoji import EMOJI_DATA
 
 VALID_SKIN_TONES = {
-    "": "",
     "light": "_light_skin_tone",
     "medium-light": "_medium-light_skin_tone",
     "medium": "_medium_skin_tone",
@@ -26,8 +25,8 @@ def build():
 
     lang = os.getenv("LANG", "en").lower()
 
-    skin_tone = os.getenv("SKIN_TONE", "light").lower()
-    skin_tone = VALID_SKIN_TONES.get(skin_tone)
+    skin_tone = os.getenv("SKIN_TONE") or ""
+    skin_tone = VALID_SKIN_TONES.get(skin_tone.lower()) or ""
 
     # sort emojis from olders to newest
     for emoji, data in sorted(EMOJI_DATA.items(), key=lambda kv: kv[1]["E"]):
