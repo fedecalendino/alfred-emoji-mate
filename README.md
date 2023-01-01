@@ -5,10 +5,10 @@
 
 #### Configuration:
 
-![vars example](./img/screenshots/config.png)
+![vars example](screenshots/config.png)
 
 
 #### Usage:
 
-![usage vars](./img/screenshots/usage.png)
+![usage vars](screenshots/usage.png)
 
