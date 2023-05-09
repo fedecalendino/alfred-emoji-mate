@@ -23,7 +23,7 @@ def build():
     skin_toned_emojis = defaultdict(list)
     aliased_emojis = defaultdict(list)
 
-    lang = os.getenv("LANG", "en").lower()
+    lang = os.getenv("LANG", "en").lower()[:2]
 
     skin_tone = os.getenv("SKIN_TONE") or ""
     skin_tone = VALID_SKIN_TONES.get(skin_tone.lower()) or ""
