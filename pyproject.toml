@@ -11,13 +11,10 @@ authors = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.11"
+python = ">=3.8,<3.12"
+alfred-pyflow = "^0.4.5"
 emoji = "^2.2.0"
 fuzzywuzzy = "^0.18.0"
-alfred-pyflow = "^0.4.5"
-
-
-
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
