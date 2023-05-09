@@ -17,6 +17,5 @@ cd ..
 echo "Copy source code"
 cp -r ./src/* dist
 
-
 echo "Finished"
 echo

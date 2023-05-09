@@ -15,6 +15,18 @@ echo "NEW VERSION: v$VERSION"
 echo
 
 
+echo "Testing workflow..."
+echo
+
+PYTHONPATH=src poetry run python3 -m unittest
+RESULT=$?
+
+if [ $RESULT != 0 ]; then
+  echo "⚠️  TESTS FAILED"
+  exit $RESULT
+fi
+
+
 echo "Building binaries..."
 echo
 ./scripts/build.sh > /dev/null
@@ -31,6 +43,7 @@ echo
 echo "Released $NAME v$VERSION"
 echo " * releases/$FILENAME"
 echo
+
 
 echo "Opening new release"
 open "./releases/$FILENAME"
