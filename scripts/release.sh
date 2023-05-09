@@ -18,7 +18,7 @@ echo
 echo "Testing workflow..."
 echo
 
-PYTHONPATH=src poetry run python3 -m unittest
+PYTHONPATH=src poetry run python3 -m unittest discover -s tests
 RESULT=$?
 
 if [ $RESULT != 0 ]; then
