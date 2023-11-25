@@ -2,13 +2,13 @@
 
 [[package]]
 name = "alfred-pyflow"
-version = "0.4.5"
+version = "0.4.6"
 description = "Minimal library for the development of Alfred Workflows."
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "alfred_pyflow-0.4.5-py3-none-any.whl", hash = "sha256:00f173bd3a0ecd95bbc98b9fa0d1bbfea20caa108aaa6001db5888ff0723b08d"},
-    {file = "alfred_pyflow-0.4.5.tar.gz", hash = "sha256:45e4fe15b88246b76ce85825d712028ab4d35bdb109edee01833e7df2db3c1d6"},
+    {file = "alfred_pyflow-0.4.6-py3-none-any.whl", hash = "sha256:8754b203c481c89b9507805fd8e906057081868d6d00cb903f0c239bf05f3daa"},
+    {file = "alfred_pyflow-0.4.6.tar.gz", hash = "sha256:b622d6759017a29a041c1c33b52365a03f505406c1d2ae1232975a7ccb2a2f8b"},
 ]
 
 [package.dependencies]
@@ -416,4 +416,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<3.12"
-content-hash = "8bf608e9e5e2681bfcdf4ee66f1e13e8def068bdf9810acb2664d31cdb11766d"
+content-hash = "8e1e30f7f79fda3ab0d408214ba7e917f60f475d7066fb0ed2d47fdf42047740"
