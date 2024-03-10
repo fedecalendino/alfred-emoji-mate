@@ -230,7 +230,7 @@ note: not all emojis are available in all languages.</string>
 		</dict>
 	</array>
 	<key>version</key>
-	<string>2.0.3</string>
+	<string>2.1.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-emoji-mate</string>
 </dict>
