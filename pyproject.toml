@@ -17,7 +17,7 @@ fuzzywuzzy = "^0.18.0"
 emoji = "^2.10.1"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.3.0"
+black = "^24.3.0"
 coverage = "^7.2.5"
 ddt = "^1.6.0"
 
