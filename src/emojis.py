@@ -26,9 +26,9 @@ def build():
     lang = os.getenv("LANG", "en").lower()[:2]
 
     skin_tone = os.getenv("SKIN_TONE") or ""
-    skin_tone = VALID_SKIN_TONES.get(skin_tone.lower()) or ""
+    skin_tone = VALID_SKIN_TONES.get(skin_tone.lower(), "")
 
-    # sort emojis from olders to newest
+    # sort emojis from oldest to newest
     for emoji, data in sorted(EMOJI_DATA.items(), key=lambda kv: kv[1]["E"]):
         if data["status"] != 2:  # fully_qualified
             continue
@@ -45,11 +45,16 @@ def build():
 
         # change or skip unwanted skin tones
         if "skin_tone" in key:
-            if skin_tone not in key:
-                continue
-
-            key = key.replace(skin_tone, "", 1)
-            prioritize_skin_tone = True
+            if skin_tone:
+                if skin_tone not in key:
+                    continue
+                key = key.replace(skin_tone, "", 1)
+                prioritize_skin_tone = True
+            else:
+                # Include only the default (yellow) skin tone when no skin tone is set
+                if any(tone in key for tone in VALID_SKIN_TONES.values()):
+                    continue
+                prioritize_skin_tone = False
 
         key = clean(key)
         code = f"{emoji}\U0000FE0F"
