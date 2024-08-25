@@ -10,5 +10,9 @@
 
 #### Usage:
 
-![usage vars](screenshots/usage.png)
+![usage example](screenshots/usage.png)
+
+![search by text example](screenshots/search by text.png)
+
+![search by emoji example](screenshots/search by emoji.png)
 

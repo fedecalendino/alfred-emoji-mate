@@ -1,6 +1,6 @@
 from pyflow.testing import WorklowTestCase
 
-from main import main
+from search_text import main
 
 
 class TestMain(WorklowTestCase):
