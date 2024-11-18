@@ -12,9 +12,9 @@ authors = [
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
-alfred-pyflow = "0.4.7"
 fuzzywuzzy = "^0.18.0"
 emoji = "^2.12.1"
+alfred-pyflow = "^0.4.8"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
