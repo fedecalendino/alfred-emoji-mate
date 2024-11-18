@@ -12,7 +12,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1F6B084F-ECB0-4573-B67E-E110AEB00649</string>
+				<string>CD7838DC-10D2-4B9A-9183-56F7F50037D7</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -22,6 +22,69 @@
 			</dict>
 		</array>
 		<key>98FFB671-15EA-49E0-AA9B-77570204157B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CD7838DC-10D2-4B9A-9183-56F7F50037D7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>AE79D98B-99FD-449A-A5BC-A23B280E8E1D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>393132C9-8FFB-45E8-85FE-29B638770563</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>CD7838DC-10D2-4B9A-9183-56F7F50037D7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F2AB2714-421B-401A-B722-157A4710DF7E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>F3E98146-DEBF-4681-9BE9-613B595892CE</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F2AB2714-421B-401A-B722-157A4710DF7E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>AE79D98B-99FD-449A-A5BC-A23B280E8E1D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>C4EBD28E-4E5D-4090-B758-528B707C5DB5</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F2AB2714-421B-401A-B722-157A4710DF7E</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -45,6 +108,25 @@
 	<string>Emoji Mate</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>1F6B084F-ECB0-4573-B67E-E110AEB00649</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -85,7 +167,7 @@
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
-				<true/>
+				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
@@ -97,21 +179,65 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>copy:</string>
+				<key>replacestring</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>F2AB2714-421B-401A-B722-157A4710DF7E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{query}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>copy:*</string>
+						<key>outputlabel</key>
+						<string>copy</string>
+						<key>uid</key>
+						<string>F3E98146-DEBF-4681-9BE9-613B595892CE</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{query}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>paste:*</string>
+						<key>outputlabel</key>
+						<string>paste</string>
+						<key>uid</key>
+						<string>C4EBD28E-4E5D-4090-B758-528B707C5DB5</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>copy</string>
+				<key>hideelse</key>
 				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
+			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>1F6B084F-ECB0-4573-B67E-E110AEB00649</string>
+			<string>CD7838DC-10D2-4B9A-9183-56F7F50037D7</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -162,6 +288,42 @@
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>393132C9-8FFB-45E8-85FE-29B638770563</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>paste:</string>
+				<key>replacestring</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>AE79D98B-99FD-449A-A5BC-A23B280E8E1D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Quickly search for emojis 🧉️</string>
@@ -170,9 +332,16 @@
 		<key>1F6B084F-ECB0-4573-B67E-E110AEB00649</key>
 		<dict>
 			<key>xpos</key>
-			<real>280</real>
+			<real>540</real>
 			<key>ypos</key>
-			<real>75</real>
+			<real>15</real>
+		</dict>
+		<key>393132C9-8FFB-45E8-85FE-29B638770563</key>
+		<dict>
+			<key>xpos</key>
+			<real>545</real>
+			<key>ypos</key>
+			<real>155</real>
 		</dict>
 		<key>8B087B9B-EF04-49BF-B7DF-710AE605EFC7</key>
 		<dict>
@@ -187,6 +356,27 @@
 			<real>30</real>
 			<key>ypos</key>
 			<real>15</real>
+		</dict>
+		<key>AE79D98B-99FD-449A-A5BC-A23B280E8E1D</key>
+		<dict>
+			<key>xpos</key>
+			<real>390</real>
+			<key>ypos</key>
+			<real>185</real>
+		</dict>
+		<key>CD7838DC-10D2-4B9A-9183-56F7F50037D7</key>
+		<dict>
+			<key>xpos</key>
+			<real>270</real>
+			<key>ypos</key>
+			<real>90</real>
+		</dict>
+		<key>F2AB2714-421B-401A-B722-157A4710DF7E</key>
+		<dict>
+			<key>xpos</key>
+			<real>390</real>
+			<key>ypos</key>
+			<real>45</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -299,7 +489,7 @@ note: not all emojis are available in all languages.</string>
 		</dict>
 	</array>
 	<key>version</key>
-	<string>2.2.0</string>
+	<string>2.3.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-emoji-mate</string>
 </dict>

@@ -12,12 +12,14 @@ def main(workflow: Workflow):
     for ratio, (name, code) in results:
         workflow.new_item(
             title=f"{code} {name}",
-            arg=name,
+            arg=f"copy:{name}",
             copytext=name,
             valid=True,
         ).set_icon_file(
             path=None,
         ).set_cmd_mod(
+            arg=f"paste:{name}",
+        ).set_alt_mod(
             subtitle=f"Match: {ratio:.2f}",
         )
 

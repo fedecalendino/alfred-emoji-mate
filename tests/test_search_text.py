@@ -11,6 +11,6 @@ class TestMain(WorklowTestCase):
         found = ""
 
         for item in feedback["items"]:
-            found += item["arg"]
+            found += item["arg"].replace("copy:", "")
 
         self.assertEqual(found, "🆓️🐾️🇩🇪️🍳️☕️📒️🇸🇪️🫕️🔚️🐑️🐝️🛏️️👁️️😳️🪶️📁️🍺️📅️👀️🔥️")
